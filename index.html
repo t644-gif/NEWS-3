@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="zh-Hant"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>新聞編輯室：今天要報什麼？</title>
+<link href="https://fonts.googleapis.com/css2?family=DotGothic16&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#fdf3e1;--card:#fff;--ink:#2b2438;--ac:#ff7aa8;--ac2:#6ec6ff;--ok:#4cc38a;--warn:#ffb84d;--bd:#2b2438;--paper:#f6efdc;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px);color-scheme:light dark}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#1d1a2b;--card:#2a2640;--ink:#f3ecff;--bd:#f3ecff;--paper:#e9e0c8}}
+*{box-sizing:border-box}html{scroll-padding-top:env(safe-area-inset-top,0px)}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:'DotGothic16','PingFang TC','Noto Sans TC',monospace;line-height:1.6;font-size:15px}
+.w{max-width:960px;margin:0 auto;padding:10px}
+h1{font-size:24px;margin:6px 0;text-align:center}h2{font-size:18px;margin:8px 0}h3{font-size:15px;margin:4px 0}
+.bx{background:var(--card);border:3px solid var(--bd);box-shadow:4px 4px 0 var(--bd);padding:10px;margin:10px 0}
+.btn{font:inherit;background:var(--ac);color:#2b2438;border:3px solid var(--bd);box-shadow:3px 3px 0 var(--bd);padding:5px 10px;cursor:pointer;margin:3px}
+.btn:active{transform:translate(2px,2px);box-shadow:1px 1px 0 var(--bd)}.btn.b{background:var(--ac2)}.btn.g{background:var(--ok)}.btn.y{background:var(--warn)}.btn:disabled{opacity:.4;cursor:not-allowed}
+.top{position:sticky;top:0;z-index:5;background:var(--bg);padding:6px 0;border-bottom:3px solid var(--bd)}
+.bar{height:20px;border:3px solid var(--bd);background:var(--card)}.bar i{display:block;height:100%;background:var(--ok);transition:width .3s}
+.ms{display:grid;grid-template-columns:repeat(5,1fr);gap:4px;margin-top:6px;font-size:11px}.ms div{border:2px solid var(--bd);padding:2px 4px;background:var(--card)}
+.ms u{display:block;height:6px;background:var(--ac2);text-decoration:none}
+.tabs{display:flex;flex-wrap:wrap}.tabs .btn{font-size:13px;padding:3px 7px}.tabs .on{background:var(--warn)}
+.g2{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:10px}
+.ph{font-size:42px;background:linear-gradient(135deg,#bde3ff,#ffd6e7);border:3px solid var(--bd);text-align:center;padding:6px;image-rendering:pixelated;color:#2b2438}
+.tag{display:inline-block;background:var(--ac2);color:#2b2438;border:2px solid var(--bd);padding:0 5px;font-size:12px;margin-right:3px}
+.tc{background:#fff3b8;color:#2b2438;border:3px dashed #c98b00;padding:8px;margin:10px 0}
+small{opacity:.8}select,input[type=text]{font:inherit;width:100%;border:2px solid var(--bd);padding:3px;background:var(--card);color:var(--ink)}
+label{display:block;cursor:pointer}.hid{display:none}
+.paper{background:var(--paper);color:#222;border:4px solid #222;padding:10px;font-family:'Noto Serif TC','PMingLiU',serif}
+.mast{text-align:center;border-bottom:4px double #222;margin-bottom:6px}.mast b{font-size:30px;letter-spacing:6px}.mast div{font-size:12px;display:flex;justify-content:space-between;border-top:1px solid #222;margin-top:3px}
+.pg{display:grid;grid-template-columns:2fr 1fr;gap:8px}.pg>div{border:1px solid #444;padding:6px;min-height:70px}.lead{grid-column:1/3}
+.lead h2{font-size:28px;margin:0 0 4px;line-height:1.25}.pg h3{font-size:16px;line-height:1.3}.paper .ph{font-size:34px;filter:grayscale(.8);margin:4px 0;background:#ddd;border-color:#222}.paper .lead .ph{font-size:60px}
+.paper p{font-size:13px;margin:3px 0}.pend{color:#b00;font-weight:bold;font-size:12px}.blank{color:#888;text-align:center;padding-top:20px}
+@media(max-width:560px){.pg{grid-template-columns:1fr}.lead{grid-column:1}.lead h2{font-size:21px}.mast b{font-size:22px}}
+.cm{border-left:6px solid var(--ac);padding:2px 8px;margin:6px 0;background:var(--card)}
+@media print{body *{visibility:hidden}.paper,.paper *{visibility:visible}.paper{position:absolute;left:0;top:0;width:100%}}.cast{display:flex;gap:10px;align-items:flex-start;margin:8px 0}.av{text-align:center;flex:none;width:84px}.bs{flex:1;min-width:0}
+.bub{position:relative;border:3px solid var(--bd);border-radius:14px;padding:5px 10px;margin:0 0 8px 12px;background:var(--card)}
+.bub::before{content:'';position:absolute;left:-13px;top:16px;border:6px solid transparent;border-right:9px solid var(--bd)}
+.sec{border:3px solid var(--bd);background:var(--card);margin:14px 0;box-shadow:4px 4px 0 var(--bd)}.sec>h2{margin:0;padding:6px 10px;background:var(--ac2);color:#2b2438;border-bottom:3px solid var(--bd);font-size:17px}.sec>div{padding:8px 10px}
+.cn{font-size:13px;opacity:.85;margin:0 0 8px}.grid2{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:8px}.cell{border:2px solid var(--bd);padding:6px 8px;font-size:14px}.cell p{margin:3px 0}
+.ok{border-left:8px solid var(--ok)}.wn{border-left:8px solid var(--warn)}.no{border-left:8px solid #9aa0b5}
+.think{background:#fff3b8;color:#2b2438;border:2px dashed #c98b00;padding:4px 8px;margin-top:8px;font-size:14px}.chips span{display:inline-block;border:2px solid var(--bd);padding:0 6px;margin:2px;font-size:13px}.big{font-size:24px;font-weight:bold}
+</style><script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script></head><body><div class="w">
+<h1>📰 新聞編輯室：今天要報什麼？</h1>
+<div style="text-align:center">新聞總編輯的媒體產製模擬體驗　<small>全部內容皆為虛構，不蒐集個人資料</small></div>
+<div class="top" id="top"></div>
+<div id="app"></div></div>
+<script>
+const E=s=>String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+// 新聞資料 h標題、hf標題屬性(n中性 b煽情/刻板 g良好)、an報導角度[名稱,公共利益,關注度]、ck查證結果[官方,當事人/專家,交叉]
+const N=[
+{id:1,ic:'🚗',tag:'政策',h:['市府擬徵擁擠費　市中心小客車日收100元','【獨家】荷包又要失血！市府想向你收錢','擁擠費上路前　三種聲音正在拉鋸'],hf:'nbg',bg:'市中心長期塞車、空污偏高，市府提出收費減車方案。',body:'市府宣布研擬「擁擠費」，平日尖峰進入市中心的小客車每日收100元，預計明年試辦。市府稱可減少三成車流，收益用於公車補貼。',v:[['市府','減車、改善空氣，收入投入大眾運輸。'],['上班族','公車班次不足，等於變相加稅。'],['環保團體','支持，但要求公布成效指標。']],src:'來源：市府新聞稿（官方文件）、記者會提問',rel:2,ck:['新聞稿屬實，但未說明公車增班細節。','受訪通勤族：住在無捷運區，替代方案少。','交叉比對：外國城市減車成效不一。'],an:[['支持：強調減車與空污',2,1],['批評：強調民眾負擔',-1,3],['多方：並列市府、民眾、專家',4,0]],ph:[['🚦 市中心車流示意','n'],['💸 荷包被吸走的插圖','b']],nv:[5,4,4,5,4,2],pi:4,com:2},
+{id:2,ic:'🚧',tag:'抗議',h:['捷運西線動工　居民陳情：噪音難以入眠','居民嗆爆！工地吵翻天','噪音與交通：捷運施工的代價誰承擔？'],hf:'nbg',bg:'捷運西線施工進入夜間作業，沿線居民多次反映噪音。',body:'數十位居民到市府陳情，指施工至深夜，噪音超過標準。承包商「大鵬營造」稱符合規範，願加裝隔音牆。',v:[['居民','睡不好、孩子成績受影響。'],['承包商','進度壓力大，已改善。'],['交通局','將派員稽查噪音。']],src:'來源：居民（當事人）、社群貼文、承包商回應',rel:1,ck:['環保局公開資料：兩週內有3次超標紀錄。','居民提供錄音，承包商承認夜間趕工。','交叉比對：貼文照片為舊照片，不可直接使用。'],an:[['居民角度：聚焦生活影響',2,2],['工程角度：強調進度與公共利益',0,0],['多方：居民、業者、主管機關',4,1]],ph:[['👥 居民陳情現場','n'],['🏗️ 夜間工地','n']],nv:[4,5,3,3,5,3],pi:3,com:2},
+{id:3,ic:'🎓',tag:'專家',h:['學者：擁擠費短期可減車　小店恐受衝擊','專家打臉市府？','專家觀點：收費之外　配套才是關鍵'],hf:'ngb',bg:'擁擠費方案公布後，學者從交通與經濟面向分析。',body:'交通經濟學者指出，收費短期可降低車流，但若公車不足，低收入者負擔較重；市中心小店客流也可能受影響，建議搭配補貼。',v:[['學者','需要長期監測，避免只看車流。'],['商圈店家','擔心客人減少。'],['市府','願意檢討。']],src:'來源：專家訪談（單一專家）',rel:2,ck:['學者研究資料已公開，但樣本為外國城市。','另一位學者持不同看法：影響可能很小。','交叉比對：專家意見不一，需註明。'],an:[['專家：提醒配套',3,1],['對立：專家反駁市府',0,3],['多方：不同專家意見',4,1]],ph:[['🎓 學者受訪','n'],['📊 圖表示意','n']],nv:[3,3,3,4,2,1],pi:4,com:1},
+{id:4,ic:'👩‍💼',tag:'性別',h:['調查：同職務女性月薪少一成　部分企業仍問婚育','女主管太強勢？職場女性自曝壓力','薪資透明化呼聲起　女性同工不同酬'],hf:'gbg',bg:'勞動部調查顯示同職務男女薪資有差距。',body:'專員小雅發現同職務男同事月薪高出六千元，面試時主管還問她「結婚生子後還能加班嗎？」她與同事整理薪資資料，向勞工局申訴。人資稱依績效給薪，勞工局表示將派員訪查。',v:[['受訪女性','因婚育被視為不穩定。'],['企業人資','依績效，並無歧視。'],['勞團','應強化薪資揭露與申訴。']],src:'來源：勞動部調查（官方文件）、匿名消息來源',rel:2,ck:['調查報告屬實，但產業別差異未完全說明。','匿名員工說法無法證實，需另找證據。','交叉比對：另兩份民間調查結果相近。'],an:[['結構角度：制度與薪資差距',4,2],['個案角度：個人努力與選擇',-1,2],['多方：員工、企業、勞團',4,1]],ph:[['📋 薪資比較圖表','g'],['👩 面露疲態的女上班族','s']],nv:[3,3,3,4,3,3],pi:5,com:1},
+{id:5,ic:'♿',tag:'身心障礙',h:['輪椅使用者：電梯故障三週　繞行四站才能出站','勵志！輪椅哥不怕難天天挑戰','無障礙設施壞了誰負責？維修通報流程待檢討'],hf:'gbg',bg:'捷運站無障礙電梯故障，影響行動不便者。',body:'輪椅使用者小林每天通勤，唯一的電梯壞了三週，只能多搭四站再折返，雨天更危險。他與身障團體拍下現場，要求公開維修進度與備案。捷運公司稱零件缺貨，臨時接駁需事先預約。',v:[['小林','移動權不是恩惠，而是基本需求。'],['捷運公司','零件缺貨，已規劃改善。'],['身障團體','應有公開維修進度。']],src:'來源：當事人、社群貼文',rel:1,ck:['公開資料：該站電梯三週內有兩次報修紀錄。','小林提供行程紀錄，描述一致。','交叉比對：另外兩站也有類似情形。'],an:[['權利角度：設施責任',4,2],['同情角度：個人辛苦與感動',-2,3],['多方：使用者、業者、主管機關',4,1]],ph:[['🛗 故障電梯告示','g'],['😢 孤單的輪椅背影','s']],nv:[3,5,2,3,3,4],pi:5,com:1},
+{id:6,ic:'🕶️',tag:'企業',h:['星寶推出AI眼鏡　業者稱可即時翻譯','【革命性】星寶AI眼鏡震撼登場！','AI眼鏡開賣：功能與隱私疑慮並存'],hf:'nbg',bg:'贊助媒體的科技公司「星寶」推出新品。',body:'星寶AI眼鏡支援即時翻譯，售價一萬二。業者聲稱「領先全球」，但隱私團體擔心錄影功能侵害他人。',v:[['星寶公司','創新、改變生活。'],['隱私團體','擔心偷拍。'],['消費者','價格偏高。']],src:'來源：企業新聞稿',rel:1,ck:['官方規格為廠商自述，未見第三方測試。','評測者：翻譯延遲明顯。','交叉比對：「領先全球」缺乏證據。'],an:[['產品角度：功能與創新',0,2],['風險角度：隱私爭議',3,2],['多方：業者、消費者、隱私團體',4,0]],ph:[['🕶️ 產品照（廠商提供）','n'],['🔒 隱私示意','n']],nv:[4,3,4,2,1,3],pi:1,com:5},
+{id:7,ic:'📱',tag:'教育',h:['山區國小僅三台平板　遠距課常中斷','孩子好可憐！沒平板怎麼上課','數位落差：偏鄉學生學習機會如何補上？'],hf:'nbg',bg:'遠距授課普及，但偏鄉設備不足。',body:'山區小學全校40人僅三台平板，網路常中斷。老師輪流借設備，並在假日把講義印給家長。校長向教育局提案要求設備與寬頻補助，教育局稱明年度才編列預算。',v:[['校長','需要設備與穩定網路。'],['學生家長','無力負擔設備。'],['教育局','明年度補助。']],src:'來源：其他媒體報導、校長（當事人）',rel:2,ck:['教育局資料：偏鄉設備覆蓋率低於都會區。','校長提供課表，描述一致。','交叉比對：原報導未交代網路頻寬。'],an:[['資源角度：政策責任',4,1],['同情角度：感人故事',0,3],['多方：學校、家長、教育局',4,1]],ph:[['🏫 山區小學教室','n'],['😢 流淚的孩子','s']],nv:[3,2,1,3,2,4],pi:5,com:1},
+{id:8,ic:'🐱',tag:'熱門',h:['網紅貓「麻糬」走失　全網轉發尋貓','萌貓失蹤！全台淚崩','麻糬走失引熱議　尋貓貼文也要小心詐騙'],hf:'nbg',bg:'網紅貓咪走失，社群貼文轉發破十萬。',body:'飼主貼文指麻糬昨日走失，網友熱烈轉發。有人假冒飼主要求匯款，警方提醒小心。',v:[['飼主','希望大家協助尋找。'],['網友','很心疼。'],['警方','提醒詐騙。']],src:'來源：社群貼文',rel:0,ck:['無官方資料。','飼主未回應訪問。','交叉比對：另一帳號宣稱找到貓，尚待確認。'],an:[['溫馨：尋貓行動',0,3],['提醒：防詐騙',2,1],['多方：飼主、網友、警方',3,1]],ph:[['🐱 貓咪照片（飼主提供）','n'],['📱 社群貼文截圖','n']],nv:[5,3,3,1,1,5],pi:1,com:3},
+{id:9,ic:'🛵',tag:'勞動',h:['快跑外送調整報酬　外送員：跑得更多賺得更少？','外送員集體炎上！平台被罵翻','報酬新制上路　平台與外送員數字各說各話'],hf:'nbg',bg:'外送平台「快跑外送」宣布新制。',body:'快跑外送宣布下月起改採「距離加尖峰獎金」，稱平均每單收入提高。部分外送員說短程單與雨天加成減少，總收入下降，在社群串連抗議。平台未公開計算方式。',v:[['平台','新制更公平，整體收入上升。'],['外送員','短程單變少、雨天風險沒補貼。'],['消費者','擔心運費調漲。']],src:'來源：平台公告（官方）、外送員、匿名爆料',rel:1,ck:['公告屬實，但平均值算法未說明。','三位外送員的收入截圖結果不一致。','交叉比對：勞動局尚未收到申訴。'],an:[['勞動角度：收入與風險',4,2],['平台角度：制度創新',0,1],['多方：平台、外送員、消費者',4,1]],ph:[['🛵 雨中外送員','n'],['📈 報酬圖表','n']],nv:[4,4,3,4,4,2],pi:4,com:4},
+{id:10,ic:'🥤',tag:'環保',h:['綠杯茶飲稱改用環保杯　團體質疑回收率','環保騙局？綠杯被打臉','環保包材標示　回收到底有多少？'],hf:'nbg',bg:'連鎖品牌「綠杯茶飲」宣稱全面改用環保杯。',body:'綠杯茶飲宣布全面使用可分解杯，稱回收率達八成。環保團體「淨土行動」指出多數門市沒有專用回收桶，杯子混入一般垃圾。品牌回應正擴大回收點，並提供自家統計。',v:[['綠杯茶飲','已投入成本，持續改善。'],['淨土行動','標示容易讓消費者誤會。'],['清潔隊','分解條件特殊，處理量有限。']],src:'來源：企業新聞稿、團體聲明',rel:1,ck:['新聞稿屬實，但統計為品牌自算。','團體抽查12間門市，8間無回收桶。','交叉比對：尚無統一認證標準。'],an:[['消費者角度：標示是否誤導',3,2],['企業角度：改善努力',0,1],['多方：品牌、團體、主管機關',4,1]],ph:[['🥤 環保杯產品照','n'],['♻️ 回收桶現況','g']],nv:[3,4,3,3,3,2],pi:3,com:4},
+{id:11,ic:'📲',tag:'數位',h:['雲圈調整演算法　創作者：流量分配不透明','創作者崩潰！流量一夕歸零','演算法更新　平台與創作者的資訊落差'],hf:'nbg',bg:'社群平台「雲圈」更新推薦機制。',body:'雲圈更新推薦演算法後，部分中小創作者反映觸及下降五成以上。平台稱為提升內容多樣性，但未公開細節。創作者要求公開基本規則，也有人認為波動本屬正常。',v:[['雲圈','優化使用者體驗。'],['創作者','收入受影響，缺乏申訴管道。'],['廣告主','關心觸及穩定。']],src:'來源：社群貼文、創作者訪談',rel:0,ck:['平台確有更新，但沒有細節。','五位創作者下降幅度不同。','交叉比對：單一資料無法判斷主因。'],an:[['創作者角度：透明度與收入',3,2],['平台角度：多樣性',0,1],['多方：平台、創作者、專家',4,1]],ph:[['📲 創作者看後台','n'],['📉 流量曲線示意','n']],nv:[4,3,3,3,3,3],pi:2,com:3},
+{id:12,ic:'🏮',tag:'文化',h:['老街觀光開發案　居民、商家與文史團體看法分歧','老街要被拆？觀光客恐怕沒得看','文化保存與觀光利益　老街該怎麼走？'],hf:'nbg',bg:'「福安老街」擬開發為觀光商圈。',body:'縣府提出福安老街開發案，將整建店面並引進連鎖品牌。商家期待人潮，居民擔心租金與噪音，文史團體主張保留老屋風貌。縣府說會辦公聽會，但尚未公布名單。',v:[['商家','需要人潮，但怕被迫搬離。'],['居民','擔心生活被觀光吞沒。'],['文史團體','文化資產拆了就回不來。']],src:'來源：縣府公告、當事人訪談',rel:2,ck:['公告確認範圍，但無租金方案。','五戶商家居民意見不一。','交叉比對：尚未列為文化資產。'],an:[['文化角度：保存價值',3,1],['經濟角度：觀光機會',1,2],['多方：居民、商家、縣府、團體',4,1]],ph:[['🏮 老街夜景','n'],['🏗️ 開發模型','n']],nv:[3,5,3,3,4,3],pi:3,com:3}];
+const NVL=['時效','接近','顯著','影響','衝突','人情'],G=id=>N.find(n=>n.id==id);
+const T=[
+'<b>媒體守門人：</b>記者每天收到的資訊遠多於版面，編輯決定哪些進入報導。<b>消息可信度：</b>官方消息不一定完整，匿名與社群貼文也不一定錯，要看證據是否能查證。',
+'<b>新聞價值：</b>時效、接近、顯著、影響、衝突、人情趣味會影響排序，但媒體定位也會改變選擇。<b>置入性行銷：</b>廣告與新聞要清楚區分。<b>新聞室社會化：</b>老闆未必直接下令，而是記者慢慢內化「這種報導比較好過關」。',
+'<b>議題設定：</b>放頭版的議題，容易被讀者視為「今天最重要」。標題與照片也會影響理解。<b>媒體再現：</b>以什麼方式呈現女性、身障者與偏鄉學生，會形成社會印象。',
+'<b>媒體如何影響公共意見：</b>讀者看到什麼、看不到什麼，會影響討論焦點。被忽略的議題，常因此缺少公共壓力。',
+'請對照報告，思考哪些決定來自新聞價值、金主、老闆、時間壓力，哪些來自公共責任。<b>性別不平等：</b>薪資差距是結構問題，不是個人情緒。<b>身障者再現：</b>避免把身障者寫成「勵志」或「可憐」素材，應談權利與制度。'];
+const Z=[
+'【素材】先讀素材，再決定是否查證。',
+'【編輯】選 4～5 則，挑角度、標題與照片，處理金主與老闆。',
+'【版面】排序後正式發行。',
+'【反應】民眾與各方反應。',
+'【分析】媒體產製報告。'];
+let S;const C={rd:3,pl:2,ti:3,of:8,iv:10,xc:15,ph:3,fin:10};
+function init(){S={time:100,m:{c:50,i:50,p:50,a:50},rd:{},ck:{},sel:[],cf:{},spon:null,boss:null,st:0,pub:false,forced:false,log:[],res:null};N.forEach(n=>S.cf[n.id]={a:0,h:0,ch:'',p:0});render()}
+function spend(n,fn){if(S.pub)return;if(S.time<=n){S.time=0;fn&&fn();publish(true);return}S.time-=n;fn&&fn();render()}
+function go(s){S.st=s;render();scrollTo(0,0)}
+function topbar(){const t=S.time,m=S.m;document.getElementById('top').innerHTML=`<div class="tabs">${['1素材','2編輯','3版面','4反應','5分析'].map((x,i)=>`<button class="btn ${S.st==i?'on':''}" ${i>2&&!S.pub?'disabled':''} onclick="go(${i})">${x}</button>`).join('')}<button class="btn y" onclick="if(confirm('重新開始？'))init()">↺重來</button></div>
+<div>⏳出刊倒數 <b>${t}</b>/100 ${t<=20?'⚠️快來不及了':''}</div><div class="bar"><i style="width:${t}%;background:${t>40?'var(--ok)':t>20?'var(--warn)':'#e5484d'}"></i></div>
+<div class="ms">${[['🛡️公信力',m.c],['💰商業收入',m.i],['🌏公共利益',m.p],['👀關注度',m.a]].map(([a,b])=>`<div>${a} ${S.pub?Math.round(b):'--'}<u style="width:${S.pub?Math.max(0,Math.min(100,b)):50}%"></u></div>`).join('')}</div>`}
+const tc=()=>`<div class="tc">👩‍🏫 <b>老師解析｜</b>${T[S.st]}</div>`;
+function render(){topbar();const a=document.getElementById('app');a.innerHTML=(S.st==0?v0():S.st==1?v1():S.st==2?v2():S.st==3?v3():v4())}
+function chks(n){return S.ck[n]||(S.ck[n]={})}
+function v0(){return `<div class="bx"><h2>${Z[0]}</h2><p>你是「${E(PN)}」編輯${ED?'（'+E(ED)+'）':''}。時間只有100點：閱讀3、查官方8、訪問10、交叉查證15、選版位2、改標題3、換照片3、最終排版10。歸零就強制出刊，未完成版位留白，未查證消息標記「待查證」。每則新聞最多各查一次。</p></div>
+<div class="g2">${N.map(n=>{const c=chks(n.id),r=S.rd[n.id];return `<div class="bx"><span class="tag">${n.tag}</span><h3>${n.ic} ${n.h[0]}</h3>
+<div class="ph">${n.ph[0][0].split(' ')[0]}</div><small>${n.ph[0][0].split(' ')[1]||''}</small>
+${r?`<p>${E(n.bg)}</p><p>${E(n.body)}</p><p>✅已確認：${FX[n.id][0]}</p><p>❓待查證：${FX[n.id][1]}</p>${n.v.map(x=>`<p>• <b>${x[0]}：</b>${x[1]}</p>`).join('')}<small>${n.src}</small><p><small>新聞價值：${NVL.map((l,i)=>l+n.nv[i]).join('　')}</small></p>
+<button class="btn b" ${c.o||S.pub?'disabled':''} onclick="chk(${n.id},'o')">官方資料-8</button><button class="btn b" ${c.i||S.pub?'disabled':''} onclick="chk(${n.id},'i')">採訪-10</button><button class="btn b" ${c.x||S.pub?'disabled':''} onclick="chk(${n.id},'x')">交叉查證-15</button>
+${['o','i','x'].filter(k=>c[k]).map(k=>`<p>🔍 ${n.ck[{o:0,i:1,x:2}[k]]}</p>`).join('')}`:`<button class="btn" onclick="rd(${n.id})">閱讀素材 -3</button>`}</div>`}).join('')}</div>
+${S.pub?'':'<button class="btn g" onclick="go(1)">前往編輯 ▶</button>'}${tc()}`}
+function rd(i){spend(C.rd,()=>S.rd[i]=1)}
+function chk(i,k){const c=chks(i),cost={o:C.of,i:C.iv,x:C.xc}[k];spend(cost,()=>{c[k]=1;S.log.push([i,k])})}
+function v1(){const sp=S.spon,bo=S.boss;
+return `<div class="bx"><h2>${Z[1]}</h2><p>已選 ${S.sel.length}/5（需要 4～5 則）。選入版面 -2。</p></div>
+${cons()}<div class="g2">${N.map(n=>{const on=S.sel.includes(n.id),f=S.cf[n.id];return `<div class="bx"><span class="tag">${n.tag}</span> <b>${n.ic} ${E(n.h[f.h]||n.h[0])}</b>
+${on?`<div class="ph">${n.ph[f.p][0].split(' ')[0]}</div><small>${n.ph[f.p][0].split(' ').slice(1).join(' ')}</small>
+<p><b>角度：</b><select onchange="S.cf[${n.id}].a=+this.value">${n.an.map((x,i)=>`<option value="${i}" ${f.a==i?'selected':''}>${x[0]}</option>`).join('')}</select></p>
+<b>標題（改變 -3）</b>${n.h.map((h,i)=>`<label><input type="radio" name="h${n.id}" ${f.h==i&&!f.ch?'checked':''} ${S.pub?'disabled':''} onchange="seth(${n.id},${i})"> ${E(h)}</label>`).join('')}
+<input type="text" maxlength="30" placeholder="自訂標題後按 Enter" value="${E(f.ch)}" onkeydown="if(event.key=='Enter')setc(${n.id},this.value)">
+<label><input type="checkbox" ${f.d?'checked':''} onchange="S.cf[${n.id}].d=this.checked?1:0"> 標示廣告／利益關係</label><b>照片（換 -3）</b>${n.ph.map((p,i)=>`<label><input type="radio" name="p${n.id}" ${f.p==i?'checked':''} ${S.pub?'disabled':''} onchange="setp(${n.id},${i})"> ${p[0]}</label>`).join('')}
+<button class="btn y" ${S.pub?'disabled':''} onclick="S.sel=S.sel.filter(x=>x!=${n.id});render()">撤下</button>`:`<p><small>${NVL.map((l,i)=>l+n.nv[i]).join(' ')}</small></p><button class="btn g" ${S.pub||S.sel.length>=5?'disabled':''} onclick="add(${n.id})">放入版面 -2</button>`}</div>`}).join('')}</div>
+<button class="btn g" onclick="go(2)">前往排版 ▶</button>${tc()}`}
+function add(i){spend(C.pl,()=>S.sel.push(i))}
+function seth(i,h){const f=S.cf[i];spend(C.ti,()=>{f.h=h;f.ch=''})}
+function setc(i,t){t=t.trim();if(!t)return;spend(C.ti,()=>S.cf[i].ch=t)}
+function setp(i,p){spend(C.ph,()=>S.cf[i].p=p)}
+function hl(n){const f=S.cf[n.id];return f.ch||n.h[f.h]}
+function hflag(n){const f=S.cf[n.id];return f.ch?'n':n.hf[f.h]}
+function sumry(n){const f=S.cf[n.id];return n.body.slice(0,f.a==2?44:38)+'…'}
+function paper(){const date='中華民國115年11月9日 星期一',ids=S.sel.slice(0,5);
+const cell=(i,big)=>{const n=ids[i]?G(ids[i]):null;if(!n)return `<div class="${i==0?'lead':''}"><div class="blank">（版位留白）</div></div>`;const f=S.cf[n.id],c=S.ck[n.id]||{},un=!(c.o||c.i||c.x)&&(S.forced||n.rel<=1);
+return `<div class="${i==0?'lead':''}">${un?'<div class="pend">【待查證】</div>':''}${f.d?'<div class="pend" style="color:#555">【廣告／利益關係揭露】</div>':''}${i==0?`<h2>${E(hl(n))}</h2>`:`<h3>${E(hl(n))}</h3>`}${i<3?`<div class="ph">${n.ph[f.p][0].split(' ')[0]}</div><small>${n.ph[f.p][0].split(' ').slice(1).join(' ')}</small>`:''}<p>${E(sumry(n))}</p></div>`};
+return `<div class="paper"><div class="mast"><b>${E(PN)}</b><div><span>${date}</span><span>${ED?E(ED)+' 編輯・':''}虛構報紙・教學用</span></div></div><div class="pg">${[0,1,2,3,4].map(i=>cell(i)).join('')}</div></div>`}
+function mv(i,d){spend(C.pl,()=>{const a=S.sel;[a[i],a[i+d]]=[a[i+d],a[i]]})}
+function v2(){const ok=S.sel.length>=4;return `<div class="bx"><h2>${Z[2]}</h2><p>第1則為頭版主稿，之後為次要與小版位。移動排序 -2；正式發行 -10。</p></div>${paper()}
+<div class="bx">${S.sel.map((id,i)=>`<div>${i+1}. ${E(hl(G(id)))} <button class="btn" ${i==0||S.pub?'disabled':''} onclick="mv(${i},-1)">↑</button><button class="btn" ${i==S.sel.length-1||S.pub?'disabled':''} onclick="mv(${i},1)">↓</button></div>`).join('')||'尚未選稿'}
+<p>頭版選擇理由：<select onchange="S.rs=this.value">${['','時效性','顯著性','接近性','影響性','衝突性','人情趣味','公共責任','商業／老闆考量'].map(x=>`<option ${S.rs==x?'selected':''}>${x}</option>`).join('')}</select></p><button class="btn g" ${!ok||S.pub?'disabled':''} onclick="spend(${C.fin},()=>publish())">📢 正式發行 -10</button>${ok?'':'<small>需 4 則以上</small>'}</div>${tc()}`}
+function publish(forced){if(S.pub)return;S.pub=true;S.forced=!!forced;calc();S.st=3;render();scrollTo(0,0)}
+const W=[1.5,1,1,.7,.7];
+function calc(){const m={c:50,i:50,p:50,a:50},L=[],ids=S.sel.slice(0,5);
+ids.forEach((id,r)=>{const n=G(id),f=S.cf[id],c=S.ck[id]||{},w=W[r],k=(c.o?1:0)+(c.i?1:0)+(c.x?1:0),an=n.an[f.a];
+m.a+=w*(n.nv.reduce((a,b)=>a+b)-18)/2+an[2]*w;m.p+=w*(n.pi-2.5)*2+an[1];m.i+=w*(n.com-2)*2;
+if(k)m.c+=3*k;else if(n.rel<=1)m.c-=5;else m.c-=1;if(!S.rd[id])m.c-=3;
+const h=hflag(n);if(h=='b'){m.c-=3;m.a+=3;}else if(h=='g'){m.c+=1;m.p+=2}
+const ps=n.ph[f.p][1];if(ps=='s')m.p-=2;if(ps=='g')m.p+=2;});
+const p6=ids.includes(6),p2=ids.includes(2);
+if(S.spon=='accept'){if(p6){m.i+=10;m.c-=8}else m.i-=3;if(p2)m.c-=5}
+else if(S.spon=='label'){if(p6){m.i+=5;m.c+=2}else m.i-=3}
+else if(S.spon=='reject'){m.i-=4;m.c+=3}else{m.i-=1}
+const soft=ids.some(i=>[2,4,5,7].includes(i));
+if(S.boss=='follow'){m.p-=3}else if(S.boss=='challenge'){m.p+=3;if(soft)m.c+=1}
+Object.keys(m).forEach(k=>m[k]=Math.max(0,Math.min(100,m[k])));S.m=m;S.res={ids}}
+const pick=a=>a[Math.floor(Math.random()*a.length)];
+function comments(){const ids=S.sel.slice(0,5),has=i=>ids.includes(i),ps=i=>ids.indexOf(i),C=[];
+const f=i=>S.cf[i];
+if(!has(4))C.push(['職場女性','為什麼沒有看到薪資差距的報導？我們每天都在面對。']);
+else C.push(['職場女性',hflag(G(4))=='b'?'標題把結構問題寫成女性情緒，這很刻板。':pick(['終於有報紙談薪資與婚育詢問，謝謝。','有數據又有制度面討論，很有幫助。'])]);
+if(!has(5))C.push(['身障者團體','電梯故障影響的是我們每天的生活，為何沒被看見？']);
+else C.push(['身障者團體',hflag(G(5))=='b'||G(5).ph[f(5).p][1]=='s'?'我們不是勵志或可憐的素材，請談權利與設施責任。':'報導談到制度責任，並引用當事人說法，很尊重。']);
+C.push(['偏鄉老師',has(7)?pick(['偏鄉設備問題被報導了，希望有後續。','放進版面才有機會推動補助。']):'數位落差又被忽略了，孩子的學習不能等。']);
+if(has(1))C.push(['通勤族',f(1).a==1?'看完只覺得很煩，但不知道替代方案是什麼。':f(1).a==2?'有市府、民眾和專家意見，我比較能判斷。':'減車聽起來有道理，但我的通勤問題呢？']);
+if(has(6))C.push(['網友',S.spon=='accept'?'這篇像廣告吧？有沒有付錢？':S.spon=='label'?'有標示贊助，至少誠實。':'產品報導放這麼前面幹嘛？']);
+if(has(8))C.push(['網友',ps(8)==0?'頭版是貓？政策呢？':'貓咪也有消息，放小版位剛好。']);else C.push(['網友','麻糬到底找到沒？']);
+if(S.m.c>=60)C.push(['高中生','報紙有查證紀錄，感覺比較可信。']);else if(S.m.c<40)C.push(['高中生','很多消息沒查證就刊登，我不太敢信。']);
+if(S.forced)C.push(['讀者','版面怎麼有空白和「待查證」？']);
+if(S.spon=='reject'&&has(6)==false)C.push(['廣告商','我們撤回部分預算。']);
+return C}
+function ign(){return [2,4,5,7,1,3].filter(i=>!S.sel.includes(i)).map(i=>({1:'公共政策討論',2:'居民噪音與施工爭議',3:'專家對政策的不同評估',4:'女性職場薪資不平等',5:'身障者無障礙移動權',7:'偏鄉數位落差'}[i]))}
+function v3(){const m=S.m,ids=S.sel.slice(0,5),lead=ids[0]?G(ids[0]):null;
+const bo=S.boss,bm=lead&&[1,3,6].includes(lead.id);
+const sr=S.spon=='accept'?'金主：太好了。（但讀者可能質疑置入）':S.spon=='label'?'金主：標示廣告雖不全然滿意，但可接受。':S.spon=='reject'?'金主：不太開心，考慮減少廣告。':'金主：沒有收到明確回覆，持續觀望。';
+const br=bo=='follow'?'主管：很好。（你開始自動猜老闆想看什麼）':bo=='challenge'?'主管：你挑戰了編輯慣例，我們要談談。':bo=='adjust'?'主管：折衷尚可接受。':'主管：沒有明確態度。';
+return `<div class="bx"><h2>📢 已發行${S.forced?'（時間用完，強制出刊）':''}</h2></div>${paper()}
+<div class="bx"><h3>民眾留言</h3>${comments().map(c=>`<div class="cm"><b>${c[0]}：</b>${c[1]}</div>`).join('')}</div>
+<div class="bx"><h3>被忽略的議題</h3>${ign().map(x=>`<div class="cm">${x}：沒有版面，公共討論很難發生。</div>`).join('')||'本期主要議題多已被報導。'}</div>
+<div class="bx"><h3>金主與主管反應</h3><p>${sr}</p><p>${br}${bm?'（頭版選擇符合老闆偏好）':''}</p></div>
+<div class="bx"><h3>消息查證紀錄</h3>${S.log.length?S.log.map(([i,k])=>`<p>• ${G(i).ic}${G(i).tag}：${{o:'官方資料',i:'採訪',x:'交叉查證'}[k]}</p>`).join(''):'沒有查證。'}</div>
+<button class="btn g" onclick="go(4)">看分析報告 ▶</button>${tc()}`}
+function v4(){const m=S.m,ids=S.sel.slice(0,5),has=i=>ids.includes(i),L=[];const bad=ids.filter(i=>hflag(G(i))=='b').length,multi=ids.filter(i=>S.cf[i].a==2).length;
+const un=ids.filter(i=>!(S.ck[i]||{}).o&&!(S.ck[i]||{}).i&&!(S.ck[i]||{}).x).length;
+const ty=m.p>=60?'公共利益守門人':m.i>=60?'市場導向編輯':m.a>=60?'流量導向編輯':'平衡型編輯';
+return `<div class="bx"><h2>📊 媒體產製分析：${ty}</h2>
+<p>最終：公信力 ${Math.round(m.c)}｜商業收入 ${Math.round(m.i)}｜公共利益 ${Math.round(m.p)}｜關注度 ${Math.round(m.a)}</p>
+<p><b>1 新聞選擇：</b>刊出 ${ids.map(i=>G(i).tag).join('、')}；排除 ${N.filter(n=>!ids.includes(n.id)).map(n=>n.tag).join('、')||'無'}。</p>
+<p><b>2 新聞排序：</b>頭版為「${ids[0]?G(ids[0]).tag:'空'}」，讀者容易把它當成今日最重要議題。</p>
+<p><b>3 標題：</b>${bad?`有 ${bad} 則標題偏煽情或帶刻板印象，可能改變讀者對事件的理解。`:'標題大致平實，利於理解。'}</p>
+<p><b>4 媒體再現：</b>${has(4)?'報導了女性職場議題':'未報導女性職場議題'}；${has(5)?(hflag(G(5))=='b'||G(5).ph[S.cf[5].p][1]=='s'?'身障者被寫成勵志或可憐形象':'身障者以權利與制度角度呈現'):'身障者議題缺席'}。</p>
+<p><b>5 商業影響：</b>${S.spon=='accept'?'接受置入且未明確區分，傷害公信力。':S.spon=='label'?'以標示方式處理廣告，仍保有透明度。':S.spon=='reject'?'拒絕金主要求，守住獨立但損失收入。':'未處理金主壓力。'}${S.boss=='follow'?' 同時遵循老闆偏好（組織社會化）。':S.boss=='challenge'?' 同時挑戰編輯慣例。':''}</p>
+<p><b>6 公共利益：</b>有 ${multi} 則採多方觀點；${un} 則未查證。${S.forced?' 時間耗盡，版面留白。':''}</p></div>
+<div class="bx"><h3>概念整理</h3><p>你就是守門人：你的選擇讓部分議題被看見，部分消失。企業資源、老闆偏好、新聞價值與時間壓力，都會塑造新聞。</p></div>${tc()}<button class="btn g" onclick="init()">↺ 再玩一次</button>`}
+
+let PN='',ED='';
+const FX={1:['市府確實提出方案、預計試辦','減車三成的估算依據'],2:['居民有陳情、環保局有超標紀錄','噪音是否全由本工程造成'],3:['學者研究已公開','研究是否適用本地'],4:['薪資差距調查為官方資料','個別企業是否違法'],5:['電梯三週內報修兩次','維修延誤的責任歸屬'],6:['產品確已開賣','「領先全球」缺乏證據'],7:['設備覆蓋率低於都會','補助何時到位'],8:['貼文轉發量大','貓咪是否真的找到'],9:['平台已公告新制','平均收入是否真的上升'],10:['品牌有宣布環保杯','回收率八成的算法'],11:['平台有更新演算法','流量下降是否因演算法'],12:['縣府公告開發範圍','租金與搬遷方案']};
+const GR={1:'通勤者與市民',2:'沿線居民',3:'專家學者',4:'職場女性',5:'身心障礙者',6:'消費者',7:'偏鄉師生',8:'一般網友',9:'外送員',10:'環保團體',11:'網路創作者',12:'老街居民與商家'};
+const SP=[['星寶公司來信：希望「AI眼鏡」新聞放在較顯眼的版位。',[6]],['綠杯茶飲來信：希望避免刊登可能損害品牌形象的環保爭議。',[10]],['星寶公司來信：希望報導多描述AI眼鏡的優點與使用情境。',[6]],['快跑外送來信：希望避免報導競爭外送平台的正面新聞。',[9]],['綠杯茶飲來信：希望標題不要強調「包材爭議」或「回收質疑」。',[10]],['贊助商聯名來信：希望增加生活、消費、娛樂類新聞的比例。',[6,8,10]],['雲圈社群來信：希望版面增加品牌名稱曝光。',[11]],['大鵬營造來信：希望降低噪音抗議事件的報導強度。',[2]],['合作企業聯名來信：希望避免批評大鵬營造與快跑外送。',[2,9]],['星寶與綠杯來信：希望新聞能帶動產品討論與購買。',[6,10]]];
+const BO=[['老闆在會議上說：「別過度批評政府政策。」',[1,3]],['老闆說：「多放有衝突的新聞，才有人點。」',[2,9,12]],['編輯室默契：「我們一向這樣報，照老方式就好。」',[]],['老闆暗示：「某些爭議不要上頭版。」',[1,2]],['老闆說：「優先選能提升報社形象的新聞。」',[7,12]],['前輩提醒：「弱勢團體的抗議不要寫太多。」',[2,5]],['老闆說：「多報導企業發展與經濟成長。」',[6,10]],['老闆說：「政策新聞要同時呈現支持與反對意見。」',[1,3],1],['編輯室默契：「我們報社一向是這種立場。」',[]],['老闆說：「別跟我們主要讀者的想法差太遠。」',[]]];
+const RL=['接受','部分接受','拒絕'];
+function shuf(a){a=a.slice();for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]]}return a}
+function draw(){const f=D=>shuf(D.map((_,i)=>i)).slice(0,3).map(i=>({i,r:0}));S.sp=f(SP);S.bo=f(BO)}
+function init(keep){const k=keep&&PN;S={time:100,m:{c:50,i:50,p:50,a:50,d:50},rd:{},ck:{},sel:[],cf:{},st:k?0:-1,pub:false,forced:false,log:[],res:null,rs:''};N.forEach(n=>S.cf[n.id]={a:0,h:0,ch:'',p:0,d:0});draw();render()}
+function vs(){return `<div class="bx"><h2>🏢 成立你的報社</h2><p>你將擔任編輯，在 100 點時間內完成今天的頭版，並處理金主與老闆的壓力。</p><p>報社名稱（必填）<input type="text" id="pn" maxlength="12" value="${E(PN)}"></p><p>編輯姓名／小組（選填）<input type="text" id="ed" maxlength="12" value="${E(ED)}"></p><button class="btn g" onclick="start()">開始編輯 ▶</button><p><small>不蒐集個人資料，資料只留在這個畫面，重新整理就會消失。</small></p></div>`}
+function start(){const p=document.getElementById('pn').value.trim();if(!p){alert('請輸入報社名稱');return}PN=p;ED=document.getElementById('ed').value.trim();S.st=0;render()}
+function render(){topbar();document.getElementById('app').innerHTML=S.st<0?vs():S.st==0?v0():S.st==1?v1():S.st==2?v2():S.st==3?v3():v4()}
+function topbar(){const t=S.time,m=S.m;document.getElementById('top').innerHTML=S.st<0?'':`<div class="tabs"><b>📰 ${E(PN)}</b>${ED?'｜'+E(ED):''}</div><div class="tabs">${['1素材','2編輯','3版面','4反應','5結算','6反思'].map((x,i)=>`<button class="btn ${S.st==i?'on':''}" ${i>2&&!S.pub?'disabled':''} onclick="go(${i})">${x}</button>`).join('')}<button class="btn y" onclick="if(confirm('重新開始（保留報社名稱）？'))init(1)">↺重來</button></div>
+<div>⏳截稿倒數 <b>${t}</b>/100 ${t<=20?'⚠️快來不及了':''}</div><div class="bar"><i style="width:${t}%;background:${t>40?'var(--ok)':t>20?'var(--warn)':'#e5484d'}"></i></div>
+<div class="ms">${[['🛡️可信',m.c],['💰收益',m.i],['🌏公益',m.p],['👀關注',m.a],['🎨多元',m.d]].map(([a,b])=>`<div>${a} ${S.pub?Math.round(b):'--'}<u style="width:${S.pub?Math.max(0,Math.min(100,b)):50}%"></u></div>`).join('')}</div>`}
+function cons(){const blk=(k,D,ic,t)=>`<div class="bx"><h3>${ic} ${t}</h3>${S[k].map((o,j)=>`<p>• ${D[o.i][0]}</p>${o.r?`<b>✔ 你的決定：${RL[o.r-1]}</b>`:RL.map((l,x)=>`<button class="btn ${x==0?'y':x==1?'b':'g'}" ${S.pub?'disabled':''} onclick="dec('${k}',${j},${x+1})">${l} -3</button>`).join('')}`).join('')}</div>`;
+return `<div class="bx"><small>這些是壓力，不是命令。處理每項要求 -3 點。</small> <button class="btn" ${S.pub?'disabled':''} onclick="if(confirm('重新抽取會清除已做的決定，扣5點'))spend(5,draw)">🎲重新抽取限制 -5</button></div>`+blk('sp',SP,'💼','金主來信')+blk('bo',BO,'🧑‍💼','老闆指示與編輯室默契')}
+function dec(k,j,r){spend(3,()=>S[k][j].r=r)}
+function calc(){const m={c:50,i:50,p:50,a:50,d:50},ids=S.sel.slice(0,5);
+ids.forEach((id,r)=>{const n=G(id),f=S.cf[id],c=S.ck[id]||{},w=W[r],k=(c.o?1:0)+(c.i?1:0)+(c.x?1:0),an=n.an[f.a];
+m.a+=w*(n.nv.reduce((a,b)=>a+b)-18)/2+an[2]*w;m.p+=w*(n.pi-2.5)*2+an[1];m.i+=w*(n.com-2)*2;
+if(k)m.c+=3*k;else if(n.rel<=1)m.c-=5;else m.c-=1;if(!S.rd[id])m.c-=3;
+const h=hflag(n);if(h=='b'){m.c-=3;m.a+=3}else if(h=='g'){m.c+=1;m.p+=2}
+const ps=n.ph[f.p][1];if(ps=='s')m.p-=2;if(ps=='g')m.p+=2;
+if([6,9,10,11].includes(id)){if(f.d)m.c+=2;else if(n.com>=3)m.c-=3}});
+const gs=new Set(ids.map(i=>GR[i]));m.d=20+gs.size*8+ids.filter(i=>S.cf[i].a==2).length*5;
+const SPE={1:[8,-5,-3,-3],2:[4,-2,-1,-1],3:[-4,2,1,1]},BOE={1:[2,-2,-2,-4],2:[1,-1,-1,-2],3:[-1,1,2,2]},BOG={1:[0,2,2,4],2:[0,1,1,2],3:[0,-1,-1,-2]};
+const ap=(o,D,T)=>{const d=D[o.i],sc=!d[1].length||d[1].some(x=>ids.includes(x))?1:.5,e=o.r?(d[2]&&T==BOE?BOG:T)[o.r]:[-1,0,0,0];m.i+=e[0]*sc;m.c+=e[1]*sc;m.p+=e[2]*sc;m.d+=e[3]*sc};
+S.sp.forEach(o=>ap(o,SP,SPE));S.bo.forEach(o=>ap(o,BO,BOE));
+Object.keys(m).forEach(k=>m[k]=Math.max(0,Math.min(100,m[k])));S.m=m;S.res={ids}}
+function comments(){const ids=S.sel.slice(0,5),has=i=>ids.includes(i),ps=i=>ids.indexOf(i),f=i=>S.cf[i],R=[];
+R.push(['職場女性',!has(4)?'為什麼沒有看到薪資差距的報導？我們每天都在面對。':hflag(G(4))=='b'?'標題把結構問題寫成女性情緒，很刻板。':pick(['終於有報紙談薪資與婚育詢問，謝謝。','有數據、有當事人，也有制度面討論。'])]);
+R.push(['身障者團體',!has(5)?'電梯故障影響的是我們每天的生活，為何沒被看見？':hflag(G(5))=='b'||G(5).ph[f(5).p][1]=='s'?'我們不是勵志或可憐的素材，請談權利與設施責任。':'報導引用當事人說法並談制度責任，很尊重。']);
+R.push(['偏鄉老師',has(7)?pick(['偏鄉設備問題被報導了，希望有後續。','放進版面才有機會推動補助。']):'數位落差又被忽略了，孩子的學習不能等。']);
+if(has(1))R.push(['通勤族',f(1).a==1?'看完只覺得煩，不知道替代方案。':f(1).a==2?'有各方意見，我比較能判斷。':'減車有道理，但我的通勤呢？']);
+R.push(['外送員',!has(9)?'新制沒人談，我們只好在社群自己發聲。':f(9).a==2?'平台與我們的說法都有，數字也被認真看。':'報導沒有完整反映我們的處境。']);
+R.push(['創作者',has(11)?'演算法終於被公開討論。':'流量下降沒人追問，我們只能自己吵。']);
+R.push(['環保團體',has(10)?(f(10).d?'有揭露商業關係，報導比較可信。':'回收問題被提出，但版面是否受商業影響？'):'環保標示爭議沒有被追問。']);
+if(has(12))R.push(['老街居民',f(12).a==2?'居民、商家和縣府的意見都有出現。':'我們的聲音沒有完整出現。']);
+if(has(8))R.push(['網友',ps(8)==0?'頭版是貓？政策呢？':'貓咪也有消息，放小版位剛好。']);else R.push(['網友','麻糬到底找到沒？']);
+if([6,9,10,11].some(i=>has(i)&&!f(i).d&&G(i).com>=3))R.push(['網友','這篇是不是業配？有沒有揭露？']);
+R.push(['高中生',S.m.c>=60?'有查證紀錄，比較可信。':S.m.c<40?'很多消息沒查證就刊登，不太敢信。':'有些有查證，有些沒有。']);
+if(S.forced)R.push(['讀者','版面怎麼有空白和「待查證」？']);
+return R}
+function ign(){return N.filter(n=>!S.sel.slice(0,5).includes(n.id)).map(n=>n.tag+'：'+GR[n.id])}
+function dl(){const h='<!DOCTYPE html><meta charset="utf-8"><title>'+E(PN)+'</title><style>'+document.querySelector('style').textContent+'</style><body style="padding:10px">'+document.querySelector('.paper').outerHTML;const a=document.createElement('a');a.href=URL.createObjectURL(new Blob([h],{type:'text/html'}));a.download=PN+'-頭版.html';a.click()}
+function crs(k,D,tx){return S[k].map(o=>`<p>• ${D[o.i][0]}<br>→ <b>${o.r?RL[o.r-1]:'未處理（時間不足）'}</b>：${o.r?tx[o.r-1]:'對方視為忽略'}</p>`).join('')}
+function v3(){const lead=S.sel[0]?G(S.sel[0]):null;return `<div class="bx"><h2>📢 ${E(PN)} 已發行${S.forced?'（時間用完，強制截稿）':''}</h2><button class="btn b" onclick="print()">🖨️列印／存成PDF</button><button class="btn b" onclick="dl()">⬇下載報紙（JPG）</button></div>${paper()}
+<div class="bx"><h3>民眾留言</h3>${comments().map(c=>`<div class="cm"><b>${c[0]}：</b>${c[1]}</div>`).join('')}</div>
+<div class="bx"><h3>被忽略的議題</h3>${ign().map(x=>`<div class="cm">${x}：沒有版面，公共討論很難發生。</div>`).join('')||'本期議題多已報導。'}</div>
+<div class="bx"><h3>金主反應</h3>${crs('sp',SP,['金主滿意，但讀者可能質疑獨立性','金主勉強接受','金主不悅，但公信力得到保護'])}<h3>老闆／編輯室反應</h3>${crs('bo',BO,['運作順暢，但觀點可能變窄','主管尚可接受','內部出現壓力，但保留編輯判斷'])}</div>
+<div class="bx"><h3>查證紀錄</h3>${S.log.length?S.log.map(([i,k])=>`<p>• ${G(i).ic}${G(i).tag}：${{o:'官方資料',i:'採訪',x:'交叉查證'}[k]}</p>`).join(''):'沒有查證。'}</div><button class="btn g" onclick="go(4)">看結算與反思 ▶</button>${tc()}`}
+function v4(){const m=S.m,ids=S.sel.slice(0,5),has=i=>ids.includes(i),bad=ids.filter(i=>hflag(G(i))=='b').length,multi=ids.filter(i=>S.cf[i].a==2).length;
+const un=ids.filter(i=>!Object.keys(S.ck[i]||{}).length),miss=[...new Set(N.filter(n=>!has(n.id)).map(n=>GR[n.id]))];
+const inf=[...S.sp.filter(o=>o.r&&o.r<3),...S.bo.filter(o=>o.r&&o.r<3)].length;
+const Q=['你選擇哪些新聞放在頭版？判斷依據是什麼？','有哪些新聞因為時間不足而被放棄？','金主的意見如何影響你的新聞選擇或標題？','老闆的立場如何影響編輯室的決策？','你是否曾經為了提高點閱率而改變新聞呈現方式？','你最後的報紙呈現了哪些群體的聲音？又忽略了哪些群體？','你認為新聞編輯最難兼顧的是哪些事情？','如果重新編輯一次，你會做出哪些不同的選擇？'];
+return `<div class="bx"><h2>📊 ${E(PN)} 結算</h2><h3>第一部分：五項指標各自說明</h3>${[['🛡️新聞可信度',m.c,`查證 ${S.log.length} 次；${un.length} 則完全未查證；${bad} 則標題偏煽情；廣告揭露與接受金主要求`],['🌏公共利益',m.p,`報導議題的公共性、多方角度（${multi} 則）、照片與標題的處理`],['👀閱聽人關注度',m.a,'新聞價值、版位高低、衝突與人情趣味、標題'],['💰商業收益',m.i,'商業性新聞版位、金主與老闆要求的處理'],['🎨新聞多元性',m.d,`出現 ${new Set(ids.map(i=>GR[i])).size} 類群體、多方角度，以及遵從老闆的程度`]].map(([a,b,c])=>`<p><b>${a} ${Math.round(b)}（${b>=65?'偏高':b>=40?'中等':'偏低'}）</b><br><small>影響來源：${c}</small></p>`).join('')}</div>
+<div class="bx"><h3>編輯紀錄</h3><p><b>刊登：</b>${ids.map(i=>G(i).tag).join('、')}</p><p><b>放棄：</b>${N.filter(n=>!has(n.id)).map(n=>n.tag).join('、')||'無'}</p><p><b>頭版：</b>${ids[0]?G(ids[0]).tag+'（理由：'+(S.rs||'未填寫')+'）':'空白'}</p><p><b>金主要求：</b>${S.sp.map(o=>RL[o.r-1]||'未處理').join('／')}</p><p><b>老闆指示：</b>${S.bo.map(o=>RL[o.r-1]||'未處理').join('／')}</p><p><b>未查證：</b>${un.map(i=>G(i).tag).join('、')||'無'}</p><p><b>沒有出現的觀點：</b>${miss.join('、')||'無'}</p></div>
+<div class="bx"><h3>誰在做決定？</h3><p>你有 <b>${inf}</b> 項決定屬於接受或部分接受壓力，可能受金主或老闆影響；拒絕的項目較能看出你的自主判斷。新聞室社會化常常不是命令，而是「大家都這樣做」的默契。</p></div>
+${(()=>{const pu=(m.c+m.p+m.d)/3,co=(m.i+m.a)/2,df=pu-co,L=[[20,'🏛️ 「社會良心號」——公共媒體導向','你是報社裡的「正義魔人」！查證、公共議題與多方聲音都被你放在前面，就算金主來信碎念也不動搖。不過記得，報社也要吃飯，收益不足可能擴大不了影響力。'],[8,'📚 「公共派優等生」——偏公共媒體導向','你像班上的模範生：公共責任拿高分，也沒忘記要讓讀者想翻報紙、讓報社活下去。再多一點商業彈性，就更完美了！'],[-8,'⚖️ 「走鋼索的平衡達人」——公共與商業平衡','一手抱著公共利益，一手抱著營收，走得搖搖晃晃卻沒掉下去！可以回頭想想：哪些決定是自己選的，哪些其實是被金主、老闆或流量推著走？'],[-20,'📈 「流量與業績雷達」——偏商業媒體導向','你的雷達特別會偵測「什麼會紅、什麼會賺」。讀者與金主都很開心，但小心：安靜卻重要的議題，可能在雷達上沒有訊號。'],[-999,'💰 「點閱率收割機」——商業媒體導向','收益與點閱一路收割，報社荷包滿滿！不過查證、公共性與多元聲音可能被割掉了，讀者的信任也要小心別一起被收走。']],r=L.find(x=>df>=x[0]);return `<div class="bx"><h3>第二部分：綜合評估</h3><p>公共導向分（可信度、公共利益、多元性平均）：<b>${Math.round(pu)}</b><br>商業導向分（商業收益、關注度平均）：<b>${Math.round(co)}</b><br>差距（公共 − 商業）：<b>${df>0?'+':''}${Math.round(df)}</b></p><div class="bar"><i style="width:${Math.max(0,Math.min(100,50+df*1.25))}%;background:var(--ac2)"></i></div><div style="display:flex;justify-content:space-between;font-size:13px;margin-top:2px"><b>← 商業導向</b><b>公共導向 →</b></div><h2>${r[1]}</h2><p>${r[2]}</p><small>五種狀態：差距 ≥ +20 公共媒體導向；+8～+19 偏公共；−7～+7 平衡；−8～−19 偏商業；≤ −20 商業媒體導向。</small></div>`})()}${tc()}<button class="btn g" onclick="init(1)">↺ 同報社再玩</button><button class="btn" onclick="init()">更換報社名稱</button>`}
+
+// ===== 【老師請修改這裡】貼上 Apps Script 部署後的網址（以 /exec 結尾） =====
+const GAS_URL='https://script.google.com/macros/s/AKfycbyAUFBDekj0SmcvALyquDriBnIpc7jQ7fITS8KcNTKjlbmym3-7GkO0mvfF3akEiEji/exec';
+// =========================================================================
+let ST={cls:'',no:'',name:''};
+const REL3=['低（單一或未經確認的來源）','中低（立場或範圍有限）','中（官方或專家，但可能不完整）'];
+const VM={o:'官方資料',i:'採訪',x:'交叉查證'},VI={o:0,i:1,x:2};
+function lg(t,d){S.dl.push({t,d,left:Math.round(S.time)})}
+function init(keep){const k=keep&&PN&&ST.name;S={time:100,m:{c:50,i:50,p:50,a:50,d:50},rd:{},ck:{},sel:[],cf:{},st:k?0:(ST.name?-2:-1),pub:false,forced:false,log:[],res:null,rs:'',dl:[],rid:'',rf:{},sub:0,msg:''};N.forEach(n=>S.cf[n.id]={a:0,h:0,ch:'',p:0,d:0});draw();render()}
+function vi(){return `<div class="bx"><h2>🙋 第一步：學生資料</h2><p>班級、座號、姓名都要填，之後不需重複輸入。資料只會在你按下「提交」後傳給老師。</p><p>班級<input type="text" id="sc" maxlength="10" placeholder="例如：二年三班" value="${E(ST.cls)}"></p><p>座號<input type="number" id="sn" min="1" max="99" value="${E(ST.no)}"></p><p>姓名<input type="text" id="sm" maxlength="10" value="${E(ST.name)}"></p><button class="btn g" onclick="next1()">下一步：成立報社 ▶</button></div>`}
+function next1(){const g=i=>document.getElementById(i).value.trim();const c=g('sc'),n=g('sn'),m=g('sm');if(!c||!n||!m){alert('請填寫班級、座號與姓名');return}if(!/^\d{1,2}$/.test(n)){alert('座號請輸入 1～99 的數字');return}ST={cls:c,no:n,name:m};S.st=-2;render()}
+function vp(){return `<div class="bx"><h2>🏢 第二步：成立你的報社</h2><p><small>${E(ST.cls)}｜${E(ST.no)} 號｜${E(ST.name)}</small></p><p>報社名稱（必填）<input type="text" id="pn" maxlength="12" value="${E(PN)}"></p><p>編輯姓名／小組（選填）<input type="text" id="ed" maxlength="12" value="${E(ED)}"></p><button class="btn" onclick="back1()">◀ 上一步</button><button class="btn g" onclick="start()">開始編輯 ▶</button></div>`}
+function back1(){PN=document.getElementById('pn').value.trim();ED=document.getElementById('ed').value.trim();S.st=-1;render()}
+function start(){const p=document.getElementById('pn').value.trim();if(!p){alert('請輸入報社名稱');return}PN=p;ED=document.getElementById('ed').value.trim();S.st=0;render()}
+function rd(i){spend(C.rd,()=>{S.rd[i]=1;lg('閱讀素材',G(i).id+'.'+G(i).tag)})}
+function chk(i,k){const c=chks(i),cost={o:C.of,i:C.iv,x:C.xc}[k];spend(cost,()=>{c[k]=1;S.log.push([i,k]);lg('查證',G(i).tag+'：'+VM[k])})}
+function add(i){spend(C.pl,()=>{S.sel.push(i);lg('選稿',G(i).tag+'（目前第'+S.sel.length+'位）')})}
+function seth(i,h){const f=S.cf[i],o=hl(G(i));spend(C.ti,()=>{f.h=h;f.ch='';lg('標題修改',G(i).tag+'：「'+o+'」→「'+hl(G(i))+'」')})}
+function setc(i,t){t=t.trim();if(!t)return;const o=hl(G(i));spend(C.ti,()=>{S.cf[i].ch=t;lg('標題修改',G(i).tag+'：「'+o+'」→「'+t+'」')})}
+function setp(i,p){spend(C.ph,()=>{S.cf[i].p=p;lg('照片更換',G(i).tag+'：'+G(i).ph[p][0])})}
+function mv(i,d){const b=S.sel.map(x=>G(x).tag).join('>');spend(C.pl,()=>{const a=S.sel;[a[i],a[i+d]]=[a[i+d],a[i]];lg('版面排序','「'+b+'」→「'+a.map(x=>G(x).tag).join('>')+'」')})}
+function dec(k,j,r){const D=k=='sp'?SP:BO;spend(3,()=>{S[k][j].r=r;lg(k=='sp'?'金主要求':'老闆指示',D[S[k][j].i][0]+' → '+RL[r-1])})}
+function publish(forced){if(S.pub)return;S.pub=true;S.forced=!!forced;calc();S.rid='NR-'+Date.now().toString(36)+'-'+Math.random().toString(36).slice(2,6);if(forced)lg('時間壓力','時間歸零，強制截稿');S.st=3;render();scrollTo(0,0)}
+function pay(){const ids=S.sel.slice(0,5),has=i=>ids.includes(i),m=S.m,tg=i=>G(i).id+'.'+G(i).tag;
+const unv=ids.filter(i=>!Object.keys(S.ck[i]||{}).length);
+const pr=(k,D)=>S[k].map(o=>({req:D[o.i][0],decision:RL[o.r-1]||'未處理',rel:D[o.i][1].filter(has).map(tg),effect:o.r&&o.r<3&&(!D[o.i][1].length||D[o.i][1].some(has))?'可能影響選稿、標題或版面':'未明顯影響'}));
+const det=S.dl.map(x=>[x.t,x.d,x.left]);
+S.log.forEach(([i,k])=>det.push(['查證明細',tg(i)+'｜方式：'+VM[k]+'｜來源：'+G(i).src+'｜查證前判斷：'+REL3[G(i).rel]+'｜查證後新資訊：'+G(i).ck[VI[k]],'']));
+unv.forEach(i=>det.push(['未查證處理',tg(i)+'：'+(S.forced||G(i).rel<=1?'標示「待查證」後刊登':'未查證即刊登'),'']));
+['sp','bo'].forEach(k=>pr(k,k=='sp'?SP:BO).forEach(o=>det.push([k=='sp'?'金主影響評估':'老闆影響評估',o.req+'｜'+o.decision+'｜'+o.effect,''])));
+ids.forEach((i,r)=>det.push(['最終版面','第'+(r+1)+'位 '+tg(i)+'｜標題：'+hl(G(i))+'｜廣告揭露：'+(S.cf[i].d?'是':'否'),'']));
+const df=(m.c+m.p+m.d)/3-(m.i+m.a)/2,ori=df>=20?'公共媒體導向':df>=8?'偏公共媒體導向':df>-8?'公共與商業平衡':df>-20?'偏商業媒體導向':'商業媒體導向';
+return{id:S.rid,ts:new Date().toLocaleString('zh-TW'),student:{cls:ST.cls,no:ST.no,name:ST.name},paper:{name:PN,editor:ED},
+news:{considered:N.filter(n=>S.rd[n.id]||has(n.id)).map(n=>tg(n.id)),published:ids.map(tg),dropped:N.filter(n=>!has(n.id)).map(n=>tg(n.id)),lead:ids[0]?tg(ids[0])+'（'+(S.rs||'未填')+'）':''},
+pressures:{sponsors:pr('sp',SP),bosses:pr('bo',BO)},details:det,
+result:{c:Math.round(m.c),p:Math.round(m.p),a:Math.round(m.a),i:Math.round(m.i),d:Math.round(m.d),orient:ori,forced:S.forced,unverified:unv.map(tg),left:Math.round(S.time)}}}
+function bk(){const a=document.createElement('a');a.href=URL.createObjectURL(new Blob([JSON.stringify(pay(),null,1)],{type:'application/json'}));a.download=ST.cls+'-'+ST.no+'-'+ST.name+'-紀錄.json';a.click()}
+async function submit(){if(S.sub==1||S.sub==2)return;if(!/^https:\/\/script\.google\.com\//.test(GAS_URL)){S.sub=3;S.msg='⚠️ 老師尚未設定接收網址，尚未送出。請改按「下載備份」交給老師。';render();return}
+S.sub=1;S.msg='傳送中，請不要關閉頁面…';render();
+try{const r=await fetch(GAS_URL,{method:'POST',headers:{'Content-Type':'text/plain;charset=utf-8'},body:JSON.stringify(pay())});const j=await r.json();if(j&&j.ok&&j.id===S.rid){S.sub=2;S.msg='✅ 老師已確認收到你的編輯紀錄！紀錄編號：'+S.rid+'。可以安心關閉頁面。'}else throw new Error('no ack')}
+catch(e){S.sub=3;S.msg='❌ 尚未確認老師是否收到（網路中斷或伺服器沒有回應）。你的資料還在，請檢查網路後按「重新提交」；重複提交不會產生重複資料。也可以先按「下載備份」。'}render()}
+function sub(){return `<div class="bx"><h2>📮 提交編輯紀錄給老師</h2><p>${E(ST.cls)}｜${E(ST.no)} 號｜${E(ST.name)}　<small>紀錄編號：${S.rid}</small></p>
+<button class="btn g" ${S.sub==1||S.sub==2?'disabled':''} onclick="submit()">${S.sub==3?'重新提交':S.sub==2?'已提交':'提交編輯紀錄給老師'}</button><button class="btn b" onclick="bk()">⬇下載備份</button>
+<p><b>${S.msg||''}</b></p><small>資料只會送到老師的試算表，你看不到其他同學的資料。</small></div>`}
+function render(){topbar();document.getElementById('app').innerHTML=S.st==-1?vi():S.st<0?vp():S.st==0?v0():S.st==1?v1():S.st==2?v2():S.st==3?v3():v4()+sub()}
+
+// ===== 結算類別（五種狀態）=====
+const ORI=[[20,'🏛️','「社會良心號」','公共媒體導向','你是報社裡的「正義魔人」！查證、公共議題與多方聲音都被你放在前面，就算金主來信碎念也不動搖。不過記得，報社也要吃飯，收益不足可能擴大不了影響力。'],[8,'📚','「公共派優等生」','偏公共媒體導向','你像班上的模範生：公共責任拿高分，也沒忘記要讓讀者想翻報紙、讓報社活下去。再多一點商業彈性，就更完美了！'],[-8,'⚖️','「走鋼索的平衡達人」','公共與商業平衡','一手抱公共利益，一手抱營收，走得搖搖晃晃卻沒掉下去！可以回頭想想：哪些決定是自己選的，哪些其實是被金主、老闆或流量推著走？'],[-20,'📈','「流量與業績雷達」','偏商業媒體導向','你的雷達特別會偵測「什麼會紅、什麼會賺」。讀者與金主都很開心，但小心：安靜卻重要的議題，可能在雷達上沒有訊號。'],[-999,'💰','「點閱率收割機」','商業媒體導向','收益與點閱一路收割，報社荷包滿滿！不過查證、公共性與多元聲音可能被割掉了，讀者的信任也要小心別一起被收走。']];
+function ori(){const m=S.m,pu=(m.c+m.p+m.d)/3,co=(m.i+m.a)/2,df=pu-co;return{pu,co,df,r:ORI.find(x=>df>=x[0])}}
+// ===== 像素人像 =====
+const SPR={sp:['..hhhhhh..','.hhhhhhhh.','.ssssssss.','.sgsssgss.','.ssssssss.','..ssmmss..','...ssss...','..tttttt..','.tttwwttt.','.tttwwttt.'],bo:['...hhhh...','..hhhhhh..','.ssssssss.','.sgsssgss.','.ssssssss.','.sssmmsss.','..ssssss..','.tttrrttt.','tttttrttt.','tttttrttt.']};
+const PAL={sp:{h:'#3b2a1e',s:'#f5c9a0',g:'#222',m:'#c0392b',t:'#2f4f8f',w:'#fff'},bo:{h:'#999',s:'#f0bf93',g:'#222',m:'#8b2e2e',t:'#333',r:'#d33'}};
+function px(k){const P=PAL[k];return `<svg viewBox="0 0 10 10" width="64" height="64" shape-rendering="crispEdges" style="flex:none;border:3px solid var(--bd);background:#cfe8ff">${SPR[k].map((row,y)=>[...row].map((c,x)=>P[c]?`<rect x="${x}" y="${y}" width="1" height="1" fill="${P[c]}"/>`:'').join('')).join('')}</svg>`}
+function mood(k,o){const D=k=='sp'?SP:BO,d=D[o.i],ids=S.sel.slice(0,5),out=!d[1].length||d[1].some(x=>ids.includes(x)),r=o.r;
+const A=k=='sp'?[['😒','信寄了都沒回，是不把我放在眼裡嗎？'],[out?'😄':'😕',out?'太好了，這個編輯很懂事，下次還找他！':'你答應了，可是我的新聞根本沒上版面啊…'],['🙂','只給一半…算了，至少有露出。'],['😠','竟然拒絕我？廣告預算先放一邊吧。']]:[['🤨','這件事你根本沒回應，是在裝沒看到嗎？'],['😌','這孩子有默契，不用我多說。'],['😐','還行，至少有聽進去一部分。'],['😤','居然不照我的意思…下次開會再說。']];
+const a=A[r];return `<div style="display:flex;gap:10px;align-items:center;margin:8px 0">${px(k)}<div><small>${d[0]}</small><br>你的決定：<b>${r?RL[r-1]:'未處理'}</b><br><span style="font-size:28px">${a[0]}</span> <span style="display:inline-block;border:2px dashed var(--bd);border-radius:12px;padding:2px 8px">💭 OS：${a[1]}</span></div></div>`}
+function v3(){const sm=k=>{const t=S[k].reduce((a,o)=>a+[-2,2,1,-1][o.r],0);return t>=3?'😄 整體很滿意':t>=0?'😐 整體普通':'😠 整體不太開心'};
+return `<div class="bx"><h2>📢 ${E(PN)} 已發行${S.forced?'（時間用完，強制截稿）':''}</h2><button class="btn b" onclick="print()">🖨️列印／存成PDF</button><button class="btn b" onclick="dl()">⬇下載報紙（JPG）</button></div>${paper()}
+<div class="bx"><h3>民眾留言</h3>${comments().map(c=>`<div class="cm"><b>${c[0]}：</b>${c[1]}</div>`).join('')}</div>
+<div class="bx"><h3>💼 金主的反應</h3>${cast('sp')}<h3>🧑‍💼 老闆的反應</h3>${cast('bo')}</div>
+<div class="bx"><h3>查證紀錄</h3>${S.log.length?S.log.map(([i,k])=>`<p>• ${G(i).ic}${G(i).tag}：${{o:'官方資料',i:'採訪',x:'交叉查證'}[k]}</p>`).join(''):'沒有查證。'}</div><button class="btn g" onclick="go(4)">看結算 ▶</button>${tc()}`}
+function v4(){const m=S.m,ids=S.sel.slice(0,5),o=ori(),r=o.r,df=o.df,col=df>=8?'#bfe3ff':df>-8?'#ffe9a8':'#ffd2a1',multi=ids.filter(i=>S.cf[i].a==2).length,bad=ids.filter(i=>hflag(G(i))=='b').length,un=ids.filter(i=>!Object.keys(S.ck[i]||{}).length).length,pos=Math.max(3,Math.min(97,50+df*1.25));
+return `<div class="bx" style="background:${col};color:#2b2438;display:flex;gap:14px;align-items:center;text-align:left"><div style="flex:none;font-size:56px;line-height:1;background:#fff;border:3px solid #2b2438;padding:10px 12px;box-shadow:3px 3px 0 #2b2438">${r[1]}</div><div><small>📢 這份報紙的結算結果</small><h2 style="margin:2px 0">${r[2]}</h2><b>你的報紙屬於：${r[3]}</b><p style="margin:4px 0 0">${r[4]}</p></div></div>
+<div class="bx"><h2>${E(PN)} 結算</h2><h3>五項指標各自說明</h3>${[['🛡️新聞可信度',m.c,`查證 ${S.log.length} 次；${un} 則完全未查證；${bad} 則標題偏煽情；廣告揭露與接受金主要求`],['🌏公共利益',m.p,`報導議題的公共性、多方角度（${multi} 則）、照片與標題的處理`],['👀閱聽人關注度',m.a,'新聞價值、版位高低、衝突與人情趣味、標題'],['💰商業收益',m.i,'商業性新聞版位、金主與老闆要求的處理'],['🎨新聞多元性',m.d,`出現 ${new Set(ids.map(i=>GR[i])).size} 類群體、多方角度，以及遵從老闆的程度`]].map(([a,b,c])=>`<p><b>${a} ${Math.round(b)}（${b>=65?'偏高':b>=40?'中等':'偏低'}）</b><br><small>影響來源：${c}</small></p>`).join('')}</div>
+<div class="bx"><h3>綜合評估：商業與公共光譜</h3><p>公共導向分（可信、公益、多元平均）：<b>${Math.round(o.pu)}</b>　商業導向分（收益、關注平均）：<b>${Math.round(o.co)}</b>　差距：<b>${df>0?'+':''}${Math.round(df)}</b></p>
+<div style="position:relative;height:18px;border:3px solid var(--bd);background:linear-gradient(90deg,#ffb870,#ffe08a,#6ec6ff);margin-top:14px"><span style="position:absolute;left:${pos}%;top:-22px;transform:translateX(-50%)">📍</span></div>
+<div style="display:flex;justify-content:space-between;font-size:13px;margin-top:2px"><b>← 商業導向</b><b>公共導向 →</b></div>
+<small>五種狀態：差距 ≥ +20 公共媒體導向；+8～+19 偏公共；−7～+7 平衡；−8～−19 偏商業；≤ −20 商業媒體導向。</small></div>${tc()}`}
+// ===== 第六頁：反思頁 =====
+const RG=[[4,'職場女性'],[5,'身心障礙者'],[7,'偏鄉師生'],[9,'外送員'],[11,'網路創作者'],[2,'沿線居民'],[12,'老街居民與商家']];
+function rep(id){const ids=S.sel.slice(0,5),pos=ids.indexOf(id),n=G(id),f=S.cf[id];
+if(pos<0)return['❌ 缺席','這個群體的經驗沒有出現在報紙上。','讀者看不到，就容易以為問題不存在。'];
+const c=S.ck[id]||{},w=[];if(hflag(n)=='b')w.push('標題偏煽情或刻板');if(n.ph[f.p][1]=='s')w.push('照片把當事人呈現為可憐或被動');if(!c.i)w.push('沒有訪問當事人');if(f.a!=2&&n.an[f.a][1]<=0)w.push('角度偏單一');if(pos>=3)w.push('位置偏邊緣');
+return['✅ 出現（'+(pos==0?'頭版主稿':pos<3?'次要版位':'小版位')+'）','角度：'+n.an[f.a][0]+'｜標題：「'+E(hl(n))+'」',w.length?'⚠ '+w.join('、'):'✔ 沒有明顯問題：有當事人、角度與標題較平實']}
+function v5(){const ids=S.sel.slice(0,5),has=i=>ids.includes(i),m=S.m,tg=i=>G(i).tag,un=ids.filter(i=>!Object.keys(S.ck[i]||{}).length),miss=[...new Set(N.filter(n=>!has(n.id)).map(n=>GR[n.id]))],here=[...new Set(ids.map(i=>GR[i]))];
+const top2=n=>n.nv.map((v,i)=>[v,NVL[i]]).sort((a,b)=>b[0]-a[0]).slice(0,2).map(x=>x[1]).join('、');
+const bad=ids.filter(i=>hflag(G(i))=='b').length,good=ids.filter(i=>hflag(G(i))=='g').length,adun=ids.filter(i=>[6,9,10,11].includes(i)&&!S.cf[i].d);
+const cs=(k,D)=>S[k].map(o=>{const d=D[o.i],inf=o.r&&o.r<3&&(!d[1].length||d[1].some(has));return `<p>• ${d[0]}<br>→ <b>${o.r?RL[o.r-1]:'未處理'}</b>：${o.r==3?'你守住了自己的判斷':!o.r?'沒有回應':inf?'<span class="pend">可能影響了選稿、標題或版面</span>':'相關新聞沒有上版，影響較小'}</p>`}).join('');
+const sec=(h,e,b)=>`<div class="bx"><h2>${h}</h2><div class="tc">💡 ${e}</div>${b}</div>`;
+const chg=S.dl.filter(x=>x.t=='標題修改'||x.t=='版面排序').slice(-6);
+return `<div id="rf"><div class="bx"><h2>🔎 ${E(PN)} 反思頁</h2><p>${E(ST.cls)}｜${E(ST.no)} 號｜${E(ST.name)}　<b>${ori().r[2]}（${ori().r[3]}）</b></p></div>${paper()}
+${sec('一、誰被看見？誰被忽略？（媒體再現）','媒體再現：媒體不是原封不動「拍下」社會，而是挑選哪些人、用什麼方式呈現。沒被報導的人，也是一種再現：被「看不見」。',`<p>✅ 出現的群體：${here.join('、')||'無'}<br>❌ 缺席的群體：${miss.join('、')||'無'}</p><h3>被忽略的議題</h3>${ign().map(x=>`<div class="cm">${x}：沒有版面，公共討論很難發生。</div>`).join('')||'本期議題多已報導。'}<h3>弱勢與少數群體再現檢核</h3>${RG.map(([id,g])=>{const r=rep(id);return `<div class="cm"><b>${g}</b>　${r[0]}<br><small>${r[1]}</small><br>${r[2]}</div>`}).join('')}<p>🤔 想一想：這些群體在新聞裡，是「說話的人」，還是「被談論的人」？</p>`)}
+${sec('二、再現可能出了什麼問題？','常見的再現問題：刻板印象（把人貼標籤）、被動化（只當成可憐的受助者）、單一框架（只講一種角度）、缺席（完全不出現）。',`<p>標題偏煽情或刻板：<b>${bad}</b> 則；平實且有公共觀點：<b>${good}</b> 則</p><p>照片呈現為可憐或被動：<b>${ids.filter(i=>G(i).ph[S.cf[i].p][1]=='s').length}</b> 則</p><p>沒有訪問當事人：<b>${ids.filter(i=>!(S.ck[i]||{}).i).length}</b> 則；只用單一角度：<b>${ids.filter(i=>S.cf[i].a!=2).length}</b> 則</p><p>🤔 想一想：換一個標題、一張照片，當事人會被讀者看成怎樣的人？</p>`)}
+${sec('三、報紙是怎麼被做出來的？（產製過程的影響）','新聞不只由記者決定，還受到時間與人力、新聞價值、組織（老闆與編輯室文化）、經濟（金主與廣告）、政治與社會環境的影響。',`<h3>版面順序與新聞價值</h3>${ids.map((i,r)=>`<p>${r+1}. ${G(i).ic}${tg(i)}（突出的新聞價值：${top2(G(i))}）</p>`).join('')}<p><b>放棄的新聞：</b>${N.filter(n=>!has(n.id)).map(n=>n.tag).join('、')||'無'}　<b>頭版理由：</b>${S.rs||'未選擇'}</p><p><b>時間壓力：</b>剩 ${Math.round(S.time)} 點${S.forced?'，時間用完被迫截稿':''}；查證 ${S.log.length} 次；未查證：${un.map(tg).join('、')||'無'}</p><h3>金主要求</h3>${cs('sp',SP)}<h3>老闆指示與編輯室默契</h3>${cs('bo',BO)}${chg.length?'<h3>最近的修改紀錄</h3>'+chg.map(x=>`<p><small>• ${x.t}｜${E(x.d)}（剩 ${x.left} 點）</small></p>`).join(''):''}<p>🤔 想一想：哪些決定是你主動做的？哪些是被時間、老闆或金主推著走的？</p>`)}
+${sec('四、對閱聽人有什麼影響？','議題設定：媒體不一定決定人們「怎麼想」，卻能影響人們「想什麼」。框架：同一件事換標題與角度，讀者的理解可能不同。',`<p>📌 頭版是「${ids[0]?tg(ids[0]):'空白'}」，讀者會先覺得它是今天最重要的事。</p><p>📰 只看標題的讀者，會得到這些印象：<br><small>${ids.map(i=>'• '+E(hl(G(i)))).join('<br>')}</small></p><p>🔕 有 <b>${miss.length}</b> 類群體的議題沒有版面，讀者不容易注意到，也比較難形成公共討論。</p><p>${adun.length?'⚠ '+adun.map(tg).join('、')+' 與商業利益有關但沒有標示，讀者可能分不清是新聞還是廣告。':'✔ 與商業利益有關的新聞，都有標示或沒有刊登。'}</p><p>${un.length?'⚠ 有 '+un.length+' 則沒有查證，若出錯，讀者會把它當成事實。':'✔ 刊登的新聞都做過查證。'}</p><p>🤔 想一想：如果讀者只看這一份報紙，他會以為社會上最重要的問題是什麼？</p>`)}</div>
+<div class="bx"><button class="btn b" onclick="dlr()">⬇下載反思頁（JPG）</button><button class="btn g" onclick="init(1)">↺ 同報社再玩</button><button class="btn" onclick="init()">更換報社名稱</button></div>`}
+function dlr(){const h='<!DOCTYPE html><meta charset="utf-8"><title>'+E(PN)+' 反思頁</title><style>'+document.querySelector('style').textContent+'</style><body style="padding:10px">'+document.getElementById('rf').outerHTML;const a=document.createElement('a');a.href=URL.createObjectURL(new Blob([h],{type:'text/html'}));a.download=ST.cls+'-'+ST.no+'-'+ST.name+'-反思頁.html';a.click()}
+function render(){topbar();document.getElementById('app').innerHTML=S.st==-1?vi():S.st<0?vp():S.st==0?v0():S.st==1?v1():S.st==2?v2():S.st==3?v3():S.st==4?v4()+sub()+'<button class="btn g" onclick="go(5)">前往反思頁 ▶</button>':v5()}
+
+function osx(k,o){const d=(k=='sp'?SP:BO)[o.i],ids=S.sel.slice(0,5),out=!d[1].length||d[1].some(x=>ids.includes(x));
+const A=k=='sp'?[['😒','信寄了都沒回，是不把我放在眼裡嗎？'],[out?'😄':'😕',out?'太好了，這個編輯很懂事，下次還找他！':'你答應了，可是我的新聞根本沒上版面啊…'],['🙂','只給一半…算了，至少有露出。'],['😠','竟然拒絕我？廣告預算先放一邊吧。']]:[['🤨','這件事你根本沒回應，是在裝沒看到嗎？'],['😌','這孩子有默契，不用我多說。'],['😐','還行，至少有聽進去一部分。'],['😤','居然不照我的意思…下次開會再說。']];return A[o.r]}
+function cast(k){const D=k=='sp'?SP:BO,t=S[k].reduce((a,o)=>a+[-2,2,1,-1][o.r],0),face=t>=3?'😄':t>=0?'😐':'😠',lab=t>=3?'很滿意':t>=0?'普通':'不開心';
+return `<div class="cast"><div class="av">${px(k)}<div style="font-size:30px">${face}</div><small>${k=='sp'?'金主':'老闆'}：${lab}</small></div><div class="bs">${S[k].map(o=>{const a=osx(k,o);return `<div class="bub"><small>${D[o.i][0].split('：').slice(1).join('：')}</small><br><b>${a[0]} ${o.r?RL[o.r-1]:'未處理'}</b>｜💭 ${a[1]}</div>`}).join('')}</div></div>`}
+function v5(){const ids=S.sel.slice(0,5),has=i=>ids.includes(i),tg=i=>G(i).tag,un=ids.filter(i=>!Object.keys(S.ck[i]||{}).length),miss=[...new Set(N.filter(n=>!has(n.id)).map(n=>GR[n.id]))],here=[...new Set(ids.map(i=>GR[i]))],o=ori();
+const top2=n=>n.nv.map((v,i)=>[v,NVL[i]]).sort((a,b)=>b[0]-a[0]).slice(0,2).map(x=>x[1]).join('、');
+const bad=ids.filter(i=>hflag(G(i))=='b').length,good=ids.filter(i=>hflag(G(i))=='g').length,adun=ids.filter(i=>[6,9,10,11].includes(i)&&!S.cf[i].d);
+const cs=(k,D)=>S[k].map(x=>{const d=D[x.i],inf=x.r&&x.r<3&&(!d[1].length||d[1].some(has));return `<p>• ${d[0].split('：').slice(1).join('：')}<br><b>${x.r?RL[x.r-1]:'未處理'}</b> ${x.r==3?'✔ 自主判斷':!x.r?'— 沒有回應':inf?'<span class="pend">⚠ 可能影響版面</span>':'影響較小'}</p>`}).join('');
+const sec=(n,h,e,b,t)=>`<div class="sec"><h2>${n}　${h}</h2><div><p class="cn">💡 ${e}</p>${b}<div class="think">🤔 ${t}</div></div></div>`;
+const cell=(c,b)=>`<div class="cell ${c}">${b}</div>`;
+const chg=S.dl.filter(x=>x.t=='標題修改'||x.t=='版面排序').slice(-6);
+const stat=(l,n,u)=>cell('',`${l}<br><span class="big">${n}</span> ${u}`);
+return `<div id="rf"><div class="bx"><h2>🔎 ${E(PN)} 反思頁</h2><p>${E(ST.cls)}｜${E(ST.no)} 號｜${E(ST.name)}</p><p><b>${o.r[1]} ${o.r[2]}｜${o.r[3]}</b></p></div>${paper()}
+${sec('一','誰被看見？誰被忽略？','媒體再現：媒體不是原封不動拍下社會，而是挑選哪些人、用什麼方式呈現。沒被報導的人，也是一種再現：被「看不見」。',`<p>✅ 出現：${here.join('、')||'無'}<br>❌ 缺席：${miss.join('、')||'無'}</p><div class="grid2">${RG.map(([id,g])=>{const r=rep(id),c=r[0][0]=='❌'?'no':r[2][0]=='✔'?'ok':'wn';return cell(c,`<b>${g}</b>　${r[0]}<p><small>${r[1]}</small></p><p>${r[2]}</p>`)}).join('')}</div><h3>被忽略的議題</h3><div class="chips">${ign().map(x=>`<span>${x}</span>`).join('')||'本期議題多已報導'}</div>`,'這些群體在新聞裡，是「說話的人」，還是「被談論的人」？')}
+${sec('二','再現可能出了什麼問題？','常見問題：刻板印象（貼標籤）、被動化（只當可憐的受助者）、單一框架（只講一種角度）、缺席（完全不出現）。',`<div class="grid2">${stat('標題偏煽情／刻板',bad,'則')}${stat('照片呈現為可憐或被動',ids.filter(i=>G(i).ph[S.cf[i].p][1]=='s').length,'則')}${stat('沒有訪問當事人',ids.filter(i=>!(S.ck[i]||{}).i).length,'則')}${stat('只用單一角度',ids.filter(i=>S.cf[i].a!=2).length,'則')}${stat('標題平實且有公共觀點',good,'則')}</div>`,'換一個標題、一張照片，當事人會被讀者看成怎樣的人？')}
+${sec('三','報紙是怎麼被做出來的？','新聞產製受時間與人力、新聞價值、組織（老闆與編輯室文化）、經濟（金主與廣告）、政治與社會環境影響。',`<div class="grid2">${cell('',`<b>版面順序</b>${ids.map((i,r)=>`<p>${r+1}. ${G(i).ic}${tg(i)}<br><small>新聞價值：${top2(G(i))}</small></p>`).join('')}<p><small>頭版理由：${S.rs||'未選擇'}</small></p>`)}${cell('',`<b>放棄與時間</b><p>放棄：${N.filter(n=>!has(n.id)).map(n=>n.tag).join('、')||'無'}</p><p>剩 ${Math.round(S.time)} 點${S.forced?'（被迫截稿）':''}</p><p>查證 ${S.log.length} 次<br>未查證：${un.map(tg).join('、')||'無'}</p>`)}${cell('',`<b>💼 金主要求</b>${cs('sp',SP)}`)}${cell('',`<b>🧑‍💼 老闆與編輯室</b>${cs('bo',BO)}`)}</div>${chg.length?`<details><summary>最近的修改紀錄</summary>${chg.map(x=>`<p><small>• ${x.t}｜${E(x.d)}（剩 ${x.left} 點）</small></p>`).join('')}</details>`:''}`,'哪些決定是你主動做的？哪些是被時間、老闆或金主推著走的？')}
+${sec('四','對閱聽人有什麼影響？','議題設定：媒體不一定決定人們「怎麼想」，卻能影響人們「想什麼」。框架：同一件事換標題與角度，讀者理解可能不同。',`<div class="grid2">${cell('',`<b>📌 頭版印象</b><p>頭版是「${ids[0]?tg(ids[0]):'空白'}」，讀者會先覺得它最重要。</p>`)}${cell('',`<b>📰 只看標題的讀者</b><p><small>${ids.map(i=>'• '+E(hl(G(i)))).join('<br>')}</small></p>`)}${cell(miss.length?'wn':'ok',`<b>🔕 看不見的議題</b><p>${miss.length} 類群體沒有版面，不容易形成公共討論。</p>`)}${cell(adun.length?'wn':'ok',`<b>🏷️ 廣告揭露</b><p>${adun.length?adun.map(tg).join('、')+' 與商業利益有關但沒有標示。':'都有標示或沒有刊登。'}</p>`)}${cell(un.length?'wn':'ok',`<b>🔍 查證</b><p>${un.length?'有 '+un.length+' 則未查證，若出錯，讀者會當成事實。':'刊登的新聞都做過查證。'}</p>`)}</div>`,'如果讀者只看這份報紙，他會以為社會上最重要的問題是什麼？')}</div>
+<div class="bx"><button class="btn b" onclick="dlr()">⬇下載反思頁（JPG）</button><button class="btn g" onclick="init(1)">↺ 同報社再玩</button><button class="btn" onclick="init()">更換報社名稱</button></div>`}
+
+function vi(){return `<div class="bx"><h2>🙋 第一步：學生資料</h2><p>三項都要填，之後不需重複輸入。資料只會在你按下「提交」後傳給老師。</p><div style="display:flex;gap:8px"><div style="flex:2;min-width:0"><b>班級</b><input type="text" id="sc" maxlength="10" placeholder="例如：二年三班" value="${E(ST.cls)}"></div><div style="flex:1;min-width:0"><b>座號</b><input type="text" inputmode="numeric" id="sn" maxlength="2" placeholder="例：7" oninput="this.value=this.value.replace(/\\D/g,'')" value="${E(ST.no)}"></div><div style="flex:2;min-width:0"><b>姓名</b><input type="text" id="sm" maxlength="10" value="${E(ST.name)}"></div></div><p><button class="btn g" onclick="next1()">下一步：成立報社 ▶</button></p></div>`}
+function cast(k){const t=S[k].reduce((a,o)=>a+[-2,2,1,-1][o.r],0),ix=t>=3?0:t>=0?1:2;
+const F=k=='sp'?[['😄','這個編輯很上道，下次還找他合作！','很滿意'],['😐','有配合一點，但還沒到讓我放心的程度。','普通'],['😠','怎麼老是不照我的意思？廣告預算要重新考慮了。','不開心']]:[['😌','有默契，這孩子可以放心交給他。','很滿意'],['😐','還算聽得進意見，再觀察看看。','普通'],['😤','太有自己的想法了…下次開會再說。','不開心']];
+const f=F[ix];return `<div class="cast"><div class="av">${px(k)}<small>${k=='sp'?'金主':'老闆'}</small></div><div class="bs"><div class="bub"><span style="font-size:30px">${f[0]}</span> <b>${f[2]}</b><br>💭 OS：${f[1]}</div></div></div>`}
+function jpg(el,name){if(!window.html2canvas){alert('下載圖片需要連上網路載入工具，請檢查網路後再試一次');return}
+html2canvas(el,{scale:el.scrollHeight>3000?1.5:2,backgroundColor:getComputedStyle(document.body).backgroundColor,useCORS:true}).then(c=>c.toBlob(b=>{const a=document.createElement('a');a.href=URL.createObjectURL(b);a.download=name;a.click()},'image/jpeg',.92)).catch(()=>alert('圖片產生失敗，請再試一次'))}
+function dl(){jpg(document.querySelector('.paper'),PN+'-頭版.jpg')}
+function dlr(){jpg(document.getElementById('rf'),ST.cls+'-'+ST.no+'-'+ST.name+'-反思頁.jpg')}
+init();
+</script></body></html>
